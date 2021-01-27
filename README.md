@@ -1,5 +1,7 @@
 # notebook-vue
 
+vue.js练手项目 记事本
+
 ## Project setup
 ```
 npm install
