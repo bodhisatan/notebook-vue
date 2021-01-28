@@ -1,6 +1,7 @@
 # notebook-vue
 
-vue.js练手项目 记事本
+前端练手项目 记事本
+采用vue.js + element
 
 ## Project setup
 ```

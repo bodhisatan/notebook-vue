@@ -1,10 +1,23 @@
 <template>
 <div>
-  <p>标题</p>
-  <input type="text" v-model="title">
-  <p>内容</p>
-  <input type="text" v-model="content">
-  <div class="btn" v-on:click="add()">添加</div>
+  <el-input
+      type="text"
+      placeholder="请输入标题"
+      v-model="title"
+      maxlength="10"
+      show-word-limit
+  >
+  </el-input>
+  <div style="margin: 20px;"></div>
+  <el-input
+      type="textarea"
+      placeholder="请输入内容"
+      v-model="content"
+      maxlength="100"
+      show-word-limit
+  >
+  </el-input>
+  <div style="margin: 50px 0 0 50%" class="el-button" v-on:click="add()">添加</div>
 </div>
 </template>
 

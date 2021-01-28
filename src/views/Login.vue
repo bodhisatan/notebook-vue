@@ -1,23 +1,22 @@
 <template>
 <div>
   <form action="" v-if="!isReg">
-    用户名：
-    <input type="text" v-model="name">
-    密码：
-    <input type="password" v-model="passwd">
-    <button type="button" v-on:click="login()">登录</button>
-    <button type="button" v-on:click="reg()">注册</button>
+    <el-input style="margin: 20px; width: 60%" placeholder="用户名" v-model="name"></el-input>
+    <el-input style="margin: 20px; width: 60%" placeholder="密码" v-model="passwd" show-password></el-input>
+    <el-row style="margin: 20px">
+      <el-button type="primary" round v-on:click="login()">登录</el-button>
+      <el-button type="primary" round v-on:click="reg()">注册</el-button>
+    </el-row>
   </form>
 
   <form action="" v-else>
-    用户名：
-    <input type="text" v-model="name">
-    密码：
-    <input type="password" v-model="passwd">
-    请再次确认密码：
-    <input type="password" v-model="repeat">
-    <button type="button" v-on:click="addUser()">确定</button>
-    <button type="button" v-on:click="cancel()">取消</button>
+    <el-input style="margin: 20px; width: 60%" placeholder="用户名" v-model="name"></el-input>
+    <el-input style="margin: 20px; width: 60%" placeholder="密码" v-model="passwd" show-password></el-input>
+    <el-input style="margin: 20px; width: 60%" placeholder="请确认密码" v-model="repeat" show-password></el-input>
+    <el-row style="margin: 20px">
+      <el-button type="primary" round v-on:click="addUser()">确定</el-button>
+      <el-button type="primary" round v-on:click="cancel()">取消</el-button>
+    </el-row>
   </form>
 
 </div>
@@ -41,9 +40,17 @@ export default {
       if (cur_username === this.name && cur_passwd === this.passwd) {
         this.name = ''
         this.passwd = ''
-        this.$router.push('/home/list')
+        let _this = this
+        this.$alert('登录成功', {
+          confirmButtonText: '确定',
+          callback() {
+            _this.$router.push('/home/list')
+          }
+        });
       } else {
-        alert("用户名或密码错误")
+        this.$alert('用户名或密码错误', {
+          confirmButtonText: '确定'
+        });
       }
 
     },
@@ -60,7 +67,9 @@ export default {
         this.repeat = ''
         this.isReg = false
       } else {
-        alert("两次密码不一致")
+        this.$alert('两次密码输入不一致', {
+          confirmButtonText: '确定'
+        });
       }
 
     },
